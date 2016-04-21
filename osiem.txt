@@ -1,0 +1,51 @@
+int ile(struct wezel *root){
+    
+    int ilosc;    
+
+    if(root->l!=NULL){
+
+        ilosc++;
+        ile(root->l);
+
+    }
+    
+    if(root->r!=NULL){
+
+        ilosc++;
+        ile(root->r);
+
+    }
+
+    return ilosc;
+}
+
+int findKey (struct wezel *root, long int sKey){
+	
+	
+    if (root->nr1==sKey){
+    	
+        return 1;
+	}
+    else{
+    	
+    	printf("qpa");
+    	if(root->l!=NULL){
+        	
+        	printf("skok w lewo");
+            findKey (root->l, sKey);
+           
+        }
+		else{
+    
+            if(root->r!=NULL){
+        		
+        		printf("skok w prawo");
+                findKey (root->r, sKey);
+                
+            }
+		}
+		
+    }
+    
+    return 0;
+} 

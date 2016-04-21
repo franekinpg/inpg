@@ -1,0 +1,70 @@
+struct komorka ***copymatrix (struct komorka ***oplansza, struct komorka ***nplansza, int orow, int ocol){
+  
+    int i,j;
+  
+    for(i=1;i+1<orow;i++){ //petla podmieniajaca tablice
+      
+           for(j=1;j+1<ocol;j++){
+          
+            nplansza[i][j]->stan=oplansza[i][j]->stan;
+           
+        }
+    }
+   
+    delMatrix(oplansza, orow, ocol);
+   
+    return nplansza;
+}
+
+void wypisz (struct komorka ***plansza, int row, int col){
+   
+       int i,j;
+      
+    for(i=0;i<row;i++){ //petla wypelniajaca tablice zerami
+      
+           for(j=0;j<col;j++){
+           
+            printf("%c", plansza[i][j]->stan);
+        }
+       
+        putchar('\n');
+    }
+}
+
+void check (struct komorka ***plansza, int row, int col){
+   
+   
+    int i,j,k,l;
+   
+   
+    for(i=1;i+1<row;i++){ //petla zliczajaca ilosc sasiadow
+       
+        for(j=1;j+1<col;j++){
+           
+            for(k=i-1;k<i+2;k++){
+               
+                for(l=j-1;l<j+2;l++){
+                   
+                    if(l==j && k==i){
+                       
+                       
+                    }
+                    else if(plansza[k][l]->stan=='*'){
+                       
+                       
+                        plansza[i][j]->sasiedzi=(plansza[i][j]->sasiedzi)+1;
+                       
+                       
+                    }
+                   
+                   
+                }
+               
+            }
+            //printf("%d ", plansza[i][j]->sasiedzi);
+            //putchar(' ');
+           
+        }
+        //putchar('\n');
+    }
+}

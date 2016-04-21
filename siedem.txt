@@ -1,0 +1,73 @@
+fill (struct wezel *root, char nimie[longi], char nnaz[longn], int nnr1, int nnr2){
+	
+	int i;
+	
+	for(i;i<longi;i++){
+			
+		root->imie[i]=nimie[i];
+	}
+		
+	for(i;i<longn;i++){
+			
+		root->naz[i]=nnaz[i];
+	}
+		
+	root->nr1=nnr1;
+	root->nr2=nnr2;
+	
+	root->l=NULL;
+	root->r=NULL;
+	
+	
+}
+
+char minKey (struct wezel *root){
+
+    char min=root->naz[0];
+    if((root->l->naz[0])<=min){
+    
+        minKey (root->l);
+    }
+    else if((root->l)==NULL){
+    
+        
+        return root->naz[0];
+    }
+}
+
+
+char maxKey (struct wezel *root){
+
+    char max=root->naz[0];
+    if((root->l->naz[0])>=max){
+    
+        maxKey (root->r);
+    }
+    else if((root->r)==NULL){
+    
+        
+        return root->naz[0];
+    }
+}
+
+int ile(struct wezel *root){
+    
+    int ilosc;    
+
+    if(root->l!=NULL){
+
+        ilosc++;
+        ile(root->l);
+
+    }
+    
+    if(root->r!=NULL){
+
+        ilosc++;
+        ile(root->r);
+
+    }
+
+    return ilosc;
+}
+

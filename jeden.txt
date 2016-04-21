@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct komorka ***createMatrix (int row, int col);
+void fillMatrix (struct komorka ***plansza, int row, int col);
+int at (struct komorka ***plansza, int x, int y);
+void insert (struct komorka ***plansza, int x, int y, char value);
+struct komorka ***resizeMatrix(struct komorka ***plansza, int orow, int ocol, int nrow, int ncol);
+void delMatrix (struct komorka ***plansza, int row, int col);
+struct komorka ***copymatrix (struct komorka ***oplansza, struct komorka ***nplansza, int orow, int ocol);
+void check (struct komorka ***plansza, int row, int col);
+void nastkrok (struct komorka ***plansza, int row, int col);
+
+struct komorka{         // deklaracja struktury komorki
+  
+    char stan;
+    int sasiedzi;         //zmienna przechowywujaca dane o ilosc zywych sasiadow komorki
+
+};
+
+struct komorka ***createMatrix (int row, int col){ //funkcja tworzaca plansze
+  
+    struct komorka ***plansza = malloc (row*sizeof(struct komorka**));
+    
+    if(plansza==NULL){
+      
+        printf("blad alokacji tablicy");
+        return NULL;
+      
+    }
+    
+    int i,j;

@@ -1,0 +1,37 @@
+void insert (struct komorka ***plansza, int x, int y, char value){
+ 
+    
+    plansza[x][y]->stan=value;
+  
+}
+
+struct komorka ***resizeMatrix(struct komorka ***plansza, int orow, int ocol, int nrow, int ncol){
+ 
+      
+    struct komorka ***nplansza=createMatrix (nrow, ncol);
+    fillMatrix(nplansza, nrow, ncol);
+    copymatrix (plansza, nplansza, nrow, ncol);
+   
+   
+    return nplansza;
+  
+}
+
+void delMatrix (struct komorka ***plansza, int row, int col){
+ 
+  
+    int i,j;
+   
+  
+    for(i=0;i<row;i++){ //petla zwalniajaca po kolei pamiec przechowujaca wskaznik na strutkure
+      
+        for(j=0;j<col;j++){
+          
+            free(plansza[i][j]);
+        }
+       
+        free(plansza[i]);
+    }
+  
+    free (plansza);
+}

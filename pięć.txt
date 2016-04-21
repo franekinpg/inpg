@@ -1,0 +1,60 @@
+void nastkrok (struct komorka ***plansza, int row, int col){
+   
+        int i,j;
+   
+    for(i=1;i+1<row;i++){ //petla przepisujaca stan do nast komorki
+       
+        for(j=1;j+1<col;j++){
+           
+            if(plansza[i][j]->stan=='*'){ // sprawdzanie czy dana komorka jest zywa czy martwa
+               
+                if(plansza[i][j]->sasiedzi<=1 || plansza[i][j]->sasiedzi>=4){
+               
+               
+                plansza[i][j]->stan=' ';
+               
+                }
+            }
+            else{
+                   
+                if(plansza[i][j]->sasiedzi==3){ //sprawdzanie czy martwa komorka narodzi sie
+                   
+                    plansza[i][j]->stan='*';
+                }
+            }
+            plansza[i][j]->sasiedzi=0;
+        }
+    }
+}
+
+
+
+int main(){
+   
+
+   
+    char atv='*';
+   
+    int nr=6;
+    int nc=6;
+   
+    int x1 = 2;
+    int y1= 2;
+    struct komorka ***matrix=createMatrix(nr,nc);
+    fillMatrix(matrix,nr,nc);
+   
+    insert(matrix, x1, y1, atv);
+    insert(matrix, 4, 2, atv);
+    insert(matrix, 4, 4, atv);
+   
+    //while(1){
+       
+        check(matrix, nr, nc);
+        nastkrok(matrix, nr, nc);
+        wypisz (matrix, nr, nc);
+    //}
+   
+   
+   
+   
+}

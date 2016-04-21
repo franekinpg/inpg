@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define longn 30
+#define longi 20
+
+struct wezel{
+
+    struct wezel *r;
+    struct wezel *l;
+    char imie[longi];
+    char naz[longn];
+    long int nr1;
+    long int nr2;
+    
+};
+
+void add (struct wezel *root, char nimie[longi], char nnaz[longn], int nnr1, int nnr2);
+void create (struct wezel *root);
+void InOrder (struct wezel *root);
+char minKey (struct wezel *root);
+char maxKey (struct wezel *root);
+int ile (struct wezel *root);
+int findKey (struct wezel *root, long int sKey);
+int hTree (struct wezel *root);
+
+void create (struct wezel *root){
+	
+	root->imie[0]='a';
+	root->naz[0]='a';
+	root->nr1=0;
+	root->nr2=0;
+	root->l==NULL;
+	root->r==NULL;
+}
+
+int compare (char tab1[longn], char tab2[longn]){
+	
+	int i;
+	int last;
+	
+	for(i=0;tab1[i]!='\0';i++){
+		
+		if(tab1[i]<tab2[i]){
+			
+			return 1;
+		}
+		
+	}
+	
+	return 0;
+}
+

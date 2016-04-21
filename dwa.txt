@@ -1,0 +1,53 @@
+    for(i=0;i<row;i++){
+      
+        plansza[i]= malloc(col*sizeof(struct komorka*));
+       
+            for(j=0;j<col;j++){
+           
+                plansza[i][j]=malloc(sizeof(struct komorka));
+               
+                if(plansza[i][j]==NULL){
+       
+                    printf("blad alokacji tablicy");
+                    return NULL;
+                }
+            }
+      
+        if(plansza[i]==NULL){
+       
+            printf("blad alokacji tablicy");
+            return NULL;
+        }
+    }
+   
+    return plansza;
+}
+
+void fillMatrix (struct komorka ***plansza, int row, int col){
+  
+       int i,j;
+      
+    for(i=0;i<row;i++){ //petla wypelniajaca tablice zerami
+      
+           for(j=0;j<col;j++){
+           
+            (plansza[i][j]->stan)=' ';
+            plansza[i][j]->sasiedzi=0;
+        }
+    }
+}
+
+
+int at (struct komorka ***plansza, int x, int y){
+ 
+      
+    if(plansza[x][y]->stan==' '){
+
+        return 1;
+    }
+    else{
+            
+        return 0;
+    }
+ 
+}
